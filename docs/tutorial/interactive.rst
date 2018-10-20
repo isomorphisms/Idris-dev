@@ -5,13 +5,17 @@ Interactive Editing
 *******************
 
 By now, we have seen several examples of how Idris’ dependent type
-system can give extra confidence in a function’s correctness by giving
-a more precise description of its intended behaviour in its *type*. We
+system can give you some confidence that your function correct by using the type
+to give the compiler some hints about what you hoped it would be like.
+We
 have also seen an example of how the type system can help with EDSL
 development by allowing a programmer to describe the type system of an
-object language. However, precise types give us more than verification
-of programs — we can also exploit types to help write programs which
+object language. However, types give us more than programming hints
+— we can also exploit types to help write programs which
 are *correct by construction*.
+
+
+//WTF does this mean? sounds like b.s.
 
 The Idris REPL provides several commands for inspecting and
 modifying parts of programs, based on their types, such as case

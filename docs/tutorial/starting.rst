@@ -7,7 +7,10 @@ Getting Started
 Prerequisites
 =============
 
-Before installing Idris, you will need to make sure you have all
+
+//is this no longer true?……
+
+Before installing Idris, you will need to make sure you have all 
 of the necessary libraries and tools. You will need:
 
 - A fairly recent version of `GHC <https://www.haskell.org/ghc/>`_. The
@@ -38,7 +41,7 @@ environment variable. Mac OS X users may find they need to add
 find that Cabal installs programs in ``%HOME%\AppData\Roaming\cabal\bin``.
 
 To check that installation has succeeded, and to write your first
-Idris program, create a file called ``hello.idr`` containing the
+Idris program, create a file called ``console_test.idr`` containing the
 following text:
 
 .. code-block:: idris
@@ -46,21 +49,25 @@ following text:
     module Main
 
     main : IO ()
-    main = putStrLn "Hello world"
+    main = putStrLn "Idris appears to be working…"
 
 If you are familiar with Haskell, it should be fairly clear what the
 program is doing and how it works, but if not, we will explain the
 details later. You can compile the program to an executable by
-entering ``idris hello.idr -o hello`` at the shell prompt. This will
-create an executable called ``hello``, which you can run:
+entering ``idris console_test.idr -o console_test`` at the shell prompt. This will
+create an executable called ``console_test``, which you can run:
 
 ::
 
-    $ idris hello.idr -o hello
-    $ ./hello
-    Hello world
+    $ idris console_test.idr -o console_test
+    $ ./console_test
+    Idris appears to be working…
 
-Please note that the dollar sign ``$`` indicates the shell prompt!
+Please note that the dollar sign ``$`` indicates the shell prompt! Don’t type
+`$` out; the terminal (console_test) should print one (or perhaps another prompt
+ending in `$`, `#`, or `%`) for you.
+
+
 Some useful options to the Idris command are:
 
 - ``-o prog`` to compile to an executable called ``prog``.
@@ -74,7 +81,7 @@ Some useful options to the Idris command are:
 The Interactive Environment
 ===========================
 
-Entering ``idris`` at the shell prompt starts up the interactive
+Typing ``idris 〔ENTER〕`` at the shell prompt starts up the interactive
 environment. You should see something like the following:
 
 .. literalinclude:: ../listing/idris-prompt-start.txt
@@ -82,11 +89,13 @@ environment. You should see something like the following:
 This gives a ``ghci`` style interface which allows evaluation of, as
 well as type checking of, expressions; theorem proving, compilation;
 editing; and various other operations. The command ``:?`` gives a list
-of supported commands. Below, we see an example run in
-which ``hello.idr`` is loaded, the type of ``main`` is checked and
-then the program is compiled to the executable ``hello``. Type
-checking a file, if successful, creates a bytecode version of the file
-(in this case ``hello.ibc``) to speed up loading in future. The
+of supported commands.
+
+Below, we see an example run in
+which ``console_test.idr`` is loaded, the type of ``main`` is checked and
+then the program is compiled to the executable ``console_test``. Type
+checking a file, if successful, creates a *bytecode* version of the file
+(in this case ``console_test.ibc``) to speed up loading in future. The
 bytecode is regenerated if the source file changes.
 
 .. _run1:

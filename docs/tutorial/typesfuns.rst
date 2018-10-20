@@ -19,17 +19,17 @@ into the Idris interactive environment by typing ``idris Prims.idr``:
 
     module Prims
 
-    x : Int
-    x = 42
+    moonshine : Int
+    moonshine = 196884
 
-    foo : String
-    foo = "Sausage machine"
+    maxim1 : String
+    maxim1 = "Fortuna multis dat nimis, nulli satis."
 
-    bar : Char
-    bar = 'Z'
+    cedilla : Char
+    cedilla = 'ç'
 
-    quux : Bool
-    quux = False
+    johns.claim : Bool
+    johns.claim = False
 
 An Idris file consists of an optional module declaration (here
 ``module Prims``) followed by an optional list of imports and a
@@ -38,10 +38,8 @@ have been specified. However Idris programs can consist of several
 modules and the definitions in each module each have their own
 namespace. This is discussed further in Section
 :ref:`sect-namespaces`. When writing Idris programs both the order in which
-definitions are given and indentation are significant. Functions and
-data types must be defined before use, incidentally each definition must
-have a type declaration, for example see ``x : Int``, ``foo :
-String``, from the above listing. New declarations must begin at the
+definitions are given and indentation are significant. 
+New declarations must begin at the
 same level of indentation as the preceding declaration.
 Alternatively, a semicolon ``;`` can be used to terminate declarations.
 
@@ -54,69 +52,68 @@ answer. For example:
 
 ::
 
-    *prims> 6*6+6
-    42 : Integer
-    *prims> x == 6*6+6
+    *prims> 196560 + 324*1
+    196884 : Integer
+    *prims> moonshine == 196560 + 324*1
     True : Bool
 
-All of the usual arithmetic and comparison operators are defined for
-the primitive types. They are overloaded using interfaces, as we
+The usual arithmetic operators are defined by overloading interfaces, as we
 will discuss in Section :ref:`sect-interfaces` and can be extended to
 work on user defined types. Boolean expressions can be tested with the
 ``if...then...else`` construct, for example:
 
 ::
 
-    *prims> if x == 6 * 6 + 6 then "The answer!" else "Not the answer"
-    "The answer!" : String
+    *prims> if moonshine == 196560 + 324*1 then "Leech" else "tea leaves"
+    "Leech" : String
 
 Data Types
 ==========
 
-Data types are declared in a similar way and with similar syntax to
+Data types are declared like in
 Haskell. Natural numbers and lists, for example, can be declared as
 follows:
 
 .. code-block:: idris
 
     data Nat    = Z   | S Nat           -- Natural numbers
-                                        -- (zero and successor)
-    data List a = Nil | (::) a (List a) -- Polymorphic lists
+                                        -- (Z is Nat’s zero and S the successor function Nat->Nat)  --endomorphism ⟳ of the one-object category ★ (and automorphism, since invertible—but the types don’t tell us that)
+    data List a = Nil | (::) a (List a) -- Lists of some type a
 
-The above declarations are taken from the standard library. Unary
-natural numbers can be either zero (``Z``), or the successor of
-another natural number (``S k``). Lists can either be empty (``Nil``)
-or a value added to the front of another list (``x :: xs``). In the
-declaration for ``List``, we used an infix operator ``::``. New
-operators such as this can be added using a fixity declaration, as
-follows:
+(These come from the standard library.)
+The second declaration says lists can either be empty (``Nil``),
+or ``|``  a value added to the front of another list (``x :: xs``).
+We used an infix cons ``::``.
+A fixity declaration for new operators is made as follows:
 
 ::
 
     infixr 10 ::
 
-Functions, data constructors and type constructors may all be given
+Functions, data constructors and type constructors may be given
 infix operators as names. They may be used in prefix form if enclosed
-in brackets, e.g. ``(::)``. Infix operators can use any of the
+in brackets, e.g. ``(::)``. Infix operators can use any of these
 symbols:
 
 ::
 
     :+-*\/=.?|&><!@$%^~#
 
-Some operators built from these symbols can't be user defined. These are
+But some operators built from these symbols can't be redefined. The language
+reserves
 ``:``,  ``=>``,  ``->``,  ``<-``,  ``=``,  ``?=``,  ``|``,  ``**``,
 ``==>``,  ``\``,  ``%``,  ``~``,  ``?``,  and ``!``.
 
 Functions
 =========
 
+.. A lot of this seems like needless detail. This is a tutorial, right?
+
 Functions are implemented by pattern matching, again using a similar
-syntax to Haskell. The main difference is that Idris requires type
+syntax to Haskell. The main difference is that Idris *requires* type
 declarations for all functions, using a single colon ``:`` (rather
-than Haskell’s double colon ``::``). Some natural number arithmetic
-functions can be defined as follows, again taken from the standard
-library:
+than Haskell’s double colon ``::``). Here are some more boring examples from the
+standard library:
 
 .. code-block:: idris
 
@@ -130,13 +127,14 @@ library:
     mult Z     y = Z
     mult (S k) y = plus y (mult k y)
 
+.. needless detail
 The standard arithmetic operators ``+`` and ``*`` are also overloaded
-for use by ``Nat``, and are implemented using the above functions.
+for use by ``Nat``.
 Unlike Haskell, there is no restriction on whether types and function
 names must begin with a capital letter or not. Function names
-(``plus`` and ``mult`` above), data constructors (``Z``, ``S``,
+(``plus`` and ``mult``), data constructors (``Z``, ``S``,
 ``Nil`` and ``::``) and type constructors (``Nat`` and ``List``) are
-all part of the same namespace. By convention, however,
+all part of the same namespace. By convention, 
 data types and constructor names typically begin with a capital letter.
 We can test these functions at the Idris prompt:
 
@@ -146,6 +144,9 @@ We can test these functions at the Idris prompt:
     4 : Nat
     Idris> mult (S (S (S Z))) (plus (S (S Z)) (S (S Z)))
     12 : Nat
+
+
+.. boring. remove
 
 .. note::
 
@@ -171,10 +172,12 @@ interfaces, meaning that we can also test the functions as follows:
     Idris> mult 3 (plus 2 2)
     12 : Nat
 
-You may wonder, by the way, why we have unary natural numbers when our
-computers have perfectly good integer arithmetic built in. The reason
-is primarily that unary numbers have a very convenient structure which
-is easy to reason about, and easy to relate to other data structures
+
+You may wonder why we wrote unary natural numbers into the language when common
+hardware has better integer arithmetic built in. 
+Unary ``Nat``’s are easy to reason about. 
+Common data structures are parameterised by ``Nat`` so, using Idris’s
+type system, we can teach the compiler about those data structures,
 as we will see later. Nevertheless, we do not want this convenience to
 be at the expense of efficiency. Fortunately, Idris knows about
 the relationship between ``Nat`` (and similarly structured types) and
@@ -210,19 +213,19 @@ indented further than the outer function.
 
 As well as functions, ``where`` blocks can include local data
 declarations, such as the following where ``MyLT`` is not accessible
-outside the definition of ``foo``:
+outside the definition of ``Heaviside``:
 
 .. code-block:: idris
 
-    foo : Int -> Int
-    foo x = case isLT of
-                Yes => x*2
-                No => x*4
+    Heaviside : Int -> Int
+    Heaviside x = case isLT of
+                Right => x
+                Left => 0
         where
-           data MyLT = Yes | No
+           data MyLT = Right | Left
 
            isLT : MyLT
-           isLT = if x < 20 then Yes else No
+           isLT = if x < 0 then Left else Right
 
 In general, functions defined in a ``where`` clause need a type
 declaration just like any top level function. However, the type
@@ -244,10 +247,12 @@ So, for example, the following definitions are legal:
       odd (S k) = even k
 
     test : List Nat
-    test = [c (S 1), c Z, d (S Z)]
-      where c x = 42 + x
-            d y = c (y + 1 + z y)
-                  where z w = y + w
+    test = [shift (S 1), shift Z, diminish (S Z)]
+      where shift x = 42 + x
+            diminish y = shift (y - 110 + zoom y)
+                  where zoom w = y * w
+
+..this appears to not compile
 
 .. _sect-holes:
 
