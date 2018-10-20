@@ -50,8 +50,25 @@ helpfully for you, `Maybe` could have [omitted](meanderful.blogspot.com/tricks)
 
 
 Idris’ designer agreed with this and wanted to go a step further: make types
-themselves mutable.      // This accomplishes XXXXX
+themselves mutable.      
+.. This accomplishes XXXXX
 
+Computable types means you can write a program that will figure out what sort of
+thing it needs to work with, as well as working with that thing. For example if
+you want to store global variables in a singleton mono..thingie, but you only
+create the singleton mono..thingie ``if`` some conditions are satisfied, …………
+you can just say that in natural Idris, rather than having to invent a horrible
+language-hack workaround just to get your point across to the compiler.
+``IF`` some condition, ``THEN`` x is a ``sphere``, and being a ``sphere``
+implies various things. ``OTHERWISE`` x would be a ``box``, and a ``box`` has
+other properties. …………
+
+[[server example]]
+
+Combine computable types with the compiler’s type inference, and you have
+helpful language innovation. You will be able to both tell the computer how to
+figure out what kind of thing you’ll be giving it when, AND it will be able to
+give you useful hints based on that.
 
 
 Old programming languages distinguished
@@ -59,7 +76,7 @@ between types and values. For example, in `Haskell
 <http://www.haskell.org>`_, `Char` is a type and `'a'` is a value of type
 `Char`. Types are immutable, not variable, in languages like `C` or `Haskell`. 
 
-//I still don’t get what the poitn is so I can’t make this shorter. The intro should be clearer and get to the point immediately.
+.. I still don’t get what the poitn is so I can’t make this shorter. The intro should be clearer and get to the point immediately.
 
 In a language with dependent types, however, types are not so different from
 other sorts of variable.  As first-class language constructs in Idris, types may be //so?
