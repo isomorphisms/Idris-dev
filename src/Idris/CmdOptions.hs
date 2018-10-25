@@ -44,26 +44,32 @@ runArgParser = do opts <- execParser $ info parser
                where
                  idrisHeader = PP.hsep [PP.text "Idris version", PP.text getIdrisVersion, PP.text ", (C) The Idris Community 2016"]
                  idrisProgDesc = PP.vsep [PP.empty,
-                                          PP.text "Idris is a general purpose pure functional programming language with dependent",
-                                          PP.text "types. Dependent types allow types to be predicated on values, meaning that",
-                                          PP.text "some aspects of a program's behaviour can be specified precisely in the type.",
-                                          PP.text "It is compiled, with eager evaluation. Its features are influenced by Haskell",
-                                          PP.text "and ML.",
+                                          PP.text "Idris is a general-purpose pure-functional programming language with dependent types.",
+                                          PP.empty
+                                          PP.text "Dependent types allow you to calculate, rather than write out, hints to the",
+                                          PP.text "compiler about what you want to do."
+                                          PP.empty
+                                          PP.text "Functional purity guarantees that your functions don’t crawl out of their crib",
+                                          PP.text "and start messing up the rest of the house.",
+                                          PP.empty 
+                                          PP.text "Idris is compiled, not interpreted, and chooses eager evaluation over lazy evaluation.",
+                                          PP.empty 
+                                          PP.text "Idris was inspired by Haskell and ML.",
                                           PP.empty,
                                           PP.vsep $ map (PP.indent 4 . PP.text) [
-                                              "+ Full dependent types with dependent pattern matching",
-                                              "+ Simple case expressions, where-clauses, with-rule",
+                                              "+ Dependent types with dependent pattern matching",  --what does “full” mean?
+                                              "+ Case expressions, where-clauses, with-rule",       --define “simple”
                                               "+ Pattern matching let- and lambda-bindings",
-                                              "+ Overloading via Interfaces (Type class-like), Monad comprehensions",
+                                              "+ Overloading via Interfaces (Type class-like), Monad comprehensions",     --monads? uh oh…
                                               "+ do-notation, idiom brackets",
-                                              "+ Syntactic conveniences for lists, tuples, dependent pairs",
-                                              "+ Totality checking",
-                                              "+ Coinductive types",
+--                                              "+ Syntactic conveniences for lists, tuples, dependent pairs",        --who cares     --unless this level of specificity is meant to imply what’s NOT in the language……
+                                              "+ Totality checking",        --what is that?
+                                              "+ Coinductive types",        --what?
                                               "+ Indentation significant syntax, Extensible syntax",
                                               "+ Tactic based theorem proving (influenced by Coq)",
-                                              "+ Cumulative universes",
-                                              "+ Simple Foreign Function Interface",
-                                              "+ Hugs style interactive environment"
+                                              "+ Cumulative universes",     --what is that?
+                                              "+ Foreign Function Interface",     --define “simple”
+                                              "+ Hugs style interactive environment"      --haskell hugs?
                                             ]]
                  idrisFooter = PP.vsep [PP.text "It is important to note that Idris is first and foremost a research tool",
                                         PP.text "and project. Thus the tooling provided and resulting programs created",
