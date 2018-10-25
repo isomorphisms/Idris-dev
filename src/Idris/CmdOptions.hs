@@ -60,20 +60,20 @@ runArgParser = do opts <- execParser $ info parser
                                               "+ Dependent types with dependent pattern matching",  --what does “full” mean?
                                               "+ Case expressions, where-clauses, with-rule",       --define “simple”
                                               "+ Pattern matching let- and lambda-bindings",
-                                              "+ Overloading via Interfaces (Type class-like), Monad comprehensions",     --monads? uh oh…
+--                                            "+ Overloading via Interfaces (Type class-like), Monad comprehensions",     --monads? uh oh…
                                               "+ do-notation, idiom brackets",
---                                              "+ Syntactic conveniences for lists, tuples, dependent pairs",        --who cares     --unless this level of specificity is meant to imply what’s NOT in the language……
+--                                            "+ Syntactic conveniences for lists, tuples, dependent pairs",        --who cares     --unless this level of specificity is meant to imply what’s NOT in the language……
                                               "+ Totality checking",        --what is that?
-                                              "+ Coinductive types",        --what?
+--                                            "+ Coinductive types",        --what?
                                               "+ Indentation significant syntax, Extensible syntax",
                                               "+ Tactic based theorem proving (influenced by Coq)",
                                               "+ Cumulative universes",     --what is that?
                                               "+ Foreign Function Interface",     --define “simple”
                                               "+ Hugs style interactive environment"      --haskell hugs?
                                             ]]
-                 idrisFooter = PP.vsep [PP.text "It is important to note that Idris is first and foremost a research tool",
-                                        PP.text "and project. Thus the tooling provided and resulting programs created",
-                                        PP.text "should not necessarily be seen as production ready nor for industrial use.",
+                 idrisFooter = PP.vsep [PP.text "At this stage Idris is foremost a research project.",
+                                        PP.text "Thus the tooling provided and resulting programs created",
+                                        PP.text "should not be seen as production ready.",
                                         PP.empty,
                                         PP.text "More details over Idris can be found online here:",
                                         PP.empty,
