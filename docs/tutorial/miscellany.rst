@@ -4,6 +4,12 @@
 Miscellany
 **********
 
+
+.. rename this as “technicals” or something and move other footnotes here
+.. also split literate into its own file named “writing reports” or sth
+.. and maybe split the others out …… NOBODY SAYS TO THEMSELVES 
+.. “HEY I WANT TO LEARN ABOUT SOME MISCELLANY!”
+
 In this section we discuss a variety of additional features:
 
 + auto, implicit, and default arguments;
