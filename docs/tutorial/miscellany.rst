@@ -116,6 +116,9 @@ reduce verbosity. A contrived but simple example is the following:
     test : Int -> String
     test x = "Number " ++ x
 
+.. how do I run this? module exports?
+
+
 In general, we cannot append an ``Int`` to a ``String``, but the
 implicit conversion function ``intString`` can convert ``x`` to a
 ``String``, so the definition of ``test`` is type correct. An implicit
